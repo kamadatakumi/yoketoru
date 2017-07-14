@@ -4,8 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    private static string _NextScene = "";
 	//次のシーンを指定する。空の場合は何もしない。
-	public static string NextScene = "";
+	public static string NextScene{
+        get {return _NextScene; }
+        set {
+        if((_NextScene != "Clear")
+            || (value == ""))
+        {
+            _NextScene = value;
+        }
+    }
+}
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +29,7 @@ public class GameManager : MonoBehaviour {
 	}
 		else if(Input.GetKeyDown(KeyCode.C)){
 			NextScene = "Clear";
+            NextScene = "GameOver";
 		}
         else if (Input.GetKey (KeyCode.A)){
             GameParams.AddScore(000001);
