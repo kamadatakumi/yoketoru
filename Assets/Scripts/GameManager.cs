@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+　　//敵
+    public GameObject prefTeki;
+    public int TekiCount = 4;
+    //アイテム
+    public GameObject prefItem;
+    public int ItemCount = 10;
+
     private static string _NextScene = "";
 	//次のシーンを指定する。空の場合は何もしない。
 	public static string NextScene{
@@ -16,10 +23,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 }
-
 	// Use this for initialization
 	void Start () {
         GameParams.SetScore(0);
+        _NextScene = "";
+        moveBall.ClearBallCount();
+
+        for (int i = 0; i < TekiCount; i++){
+            Instantiate(prefTeki);
+        }
+        for (int i = 0; i < ItemCount; i++){
+            Instantiate(prefItem);
+        }
 	}
 	
 	// Update is called once per frame

@@ -15,6 +15,10 @@ public class moveBall : MonoBehaviour {
 
 	private static int BallCount=0;
 
+    public static void ClearBallCount(){
+        BallCount = 0;
+    }
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +33,7 @@ public class moveBall : MonoBehaviour {
 		if(CompareTag("Item")){
 		BallCount++;
 	Debug.Log(BallCount);
-		CountText.text = "" + BallCount;
+		//CountText.text = "" + BallCount;
 	}
 	}
 
@@ -38,13 +42,24 @@ public class moveBall : MonoBehaviour {
 	void Update () {
 		
 	}
+    void OnTriggerEnter(Collider col){
+        if (col.CompareTag("Player"))
+        {
+            if (CompareTag("Item"))
+            {
+                GameParams.AddScore(100);
+                Destroy(gameObject);
+
+                BallCount--;
+                //CountText.text = "" + BallCount;
+                if (BallCount <= 0)
+                {
+                    GameManager.NextScene = "Clear";
+                }
+            }
+        }
+    }
 	void OnDestroy(){
-		if (CompareTag ("Item")) {
-			BallCount--;
-			CountText.text = "" + BallCount;
-			if (BallCount <= 0) {
-                GameManager.NextScene = "Clear";
-			}
-		}
+
 	}
 }
