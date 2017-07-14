@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        GameParams.SetScore(0);
 	}
 	
 	// Update is called once per frame
@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour {
 		else if(Input.GetKeyDown(KeyCode.C)){
 			NextScene = "Clear";
 		}
+        else if (Input.GetKey (KeyCode.A)){
+            GameParams.AddScore(000001);
+        }
 		if(NextScene.Length > 0){
 			SceneManager.LoadSceneAsync (NextScene,LoadSceneMode.Additive);
 			NextScene = "";
