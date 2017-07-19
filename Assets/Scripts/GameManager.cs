@@ -20,21 +20,23 @@ public class GameManager : MonoBehaviour {
             || (value == ""))
         {
             _NextScene = value;
+            Time.timeScale = 0;
         }
     }
 }
 	// Use this for initialization
 	void Start () {
+        //time.timescale=1;
         GameParams.SetScore(0);
         _NextScene = "";
         moveBall.ClearBallCount();
 
-        for (int i = 0; i < TekiCount; i++){
+       /* for (int i = 0; i < TekiCount; i++){
             Instantiate(prefTeki);
         }
         for (int i = 0; i < ItemCount; i++){
             Instantiate(prefItem);
-        }
+        }*/
 	}
 	
 	// Update is called once per frame

@@ -23,13 +23,13 @@ public class moveBall : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rig = GetComponent<Rigidbody> ();
-		rig.velocity = new Vector3 (vx, vy, 0f);
+	/*	rig.velocity = new Vector3 (vx, vy, 0f);
 
 	Vector3 pos = new Vector3(
 		Random.Range (MIN_X, MAX_X),
 		Random.Range (MIN_Y, MAX_Y),
 		0f);
-	transform.position = pos;
+	transform.position = pos;*/
 		if(CompareTag("Item")){
 		BallCount++;
 	Debug.Log(BallCount);

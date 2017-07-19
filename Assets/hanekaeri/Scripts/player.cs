@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class player : MonoBehaviour {
 	public float MAX_SPEED = 10f;
+    public Bounds MoveBounds;
+
+    void OnDrawGizmos(){
+        Gizmos.DrawWireCube(MoveBounds.center, MoveBounds.size);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +28,8 @@ public class player : MonoBehaviour {
 			                 target,
 			                 MAX_SPEED * Time.deltaTime);
 
+        newpos.x = Mathf.Clamp(newpos.x, MoveBounds.min.x, MoveBounds.max.x);
+        newpos.y = Mathf.Clamp(newpos.y, MoveBounds.min.y, MoveBounds.max.y);
 		transform.position = newpos;
 	}
 

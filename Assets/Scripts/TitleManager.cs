@@ -12,6 +12,7 @@ public class TitleManager : MonoBehaviour {
 		//Fire1キーが押されたら、Gameシーンに切り替え
 		if(Input.GetButtonDown("Fire1")){
 			SceneManager.LoadSceneAsync("Game");
+            Time.timeScale = 1;
 		}
 	}
 }
