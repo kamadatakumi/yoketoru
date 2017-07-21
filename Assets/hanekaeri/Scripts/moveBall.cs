@@ -13,6 +13,8 @@ public class moveBall : MonoBehaviour {
 	public float MIN_Y = -4f;
 	public float MAX_Y = 6f;
 
+    private AudioSource audioSource;
+
 	private static int BallCount=0;
 
     public static void ClearBallCount(){
@@ -23,6 +25,7 @@ public class moveBall : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rig = GetComponent<Rigidbody> ();
+        audioSource = GetComponent<AudioSource>();
 	/*	rig.velocity = new Vector3 (vx, vy, 0f);
 
 	Vector3 pos = new Vector3(
@@ -47,6 +50,7 @@ public class moveBall : MonoBehaviour {
         {
             if (CompareTag("Item"))
             {
+                GameManager.PlaySE(0);
                 GameParams.AddScore(100);
                 Destroy(gameObject);
 
@@ -54,7 +58,9 @@ public class moveBall : MonoBehaviour {
                 //CountText.text = "" + BallCount;
                 if (BallCount <= 0)
                 {
+
                     GameManager.NextScene = "Clear";
+                    GameManager.stopBGM();
                 }
             }
         }

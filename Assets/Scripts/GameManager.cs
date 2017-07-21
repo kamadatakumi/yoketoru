@@ -7,6 +7,16 @@ public class GameManager : MonoBehaviour {
 　　//敵
     public GameObject prefTeki;
     public int TekiCount = 4;
+
+    public AudioClip[] SE;
+    public AudioSource SEAudio;
+    private static GameManager _instance;
+    private AudioSource audioSource;
+
+    public static void PlaySE(int num){
+        _instance.SEAudio.PlayOneShot(_instance.SE[num]);
+    }
+
     //アイテム
     public GameObject prefItem;
     public int ItemCount = 10;
@@ -30,6 +40,7 @@ public class GameManager : MonoBehaviour {
         GameParams.SetScore(0);
         _NextScene = "";
         moveBall.ClearBallCount();
+        _instance = this;
 
        /* for (int i = 0; i < TekiCount; i++){
             Instantiate(prefTeki);
@@ -37,8 +48,14 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < ItemCount; i++){
             Instantiate(prefItem);
         }*/
+        audioSource = GetComponent<AudioSource>();
+        
 	}
-	
+
+    public static void stopBGM()
+    {
+        _instance.audioSource.Stop();
+    }
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.O)){
