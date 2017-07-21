@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour {
 	}
 		else if(Input.GetKeyDown(KeyCode.C)){
 			NextScene = "Clear";
-            NextScene = "GameOver";
 		}
         else if (Input.GetKey (KeyCode.A)){
             GameParams.AddScore(000001);
