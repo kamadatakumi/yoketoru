@@ -37,7 +37,6 @@ public class player : MonoBehaviour {
 		if(col.CompareTag("Teki")){
 			Destroy (gameObject);
             GameManager.NextScene = "GameOver";
-            GameManager.stopBGM();
 		}
 	}
 }
