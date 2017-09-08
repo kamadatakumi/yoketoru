@@ -13,6 +13,10 @@ public class TitleManager : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1")){
 			SceneManager.LoadSceneAsync("Game");
             Time.timeScale = 1;
-		}
+        if(Input.GetButtonDown("Fire2")){
+            SceneManager.LoadSceneAsync("Game");
+            Time.timeScale = 1;
+         }
+        }
 	}
 }
